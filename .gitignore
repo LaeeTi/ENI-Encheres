@@ -1,17 +1,25 @@
-/build/
+/bin/
+# Compiled class file
+*.class
 
-\.classpath
+# Log file
+*.log
 
-\.project
+# BlueJ files
+*.ctxt
 
-\.settings/\.jsdtscope
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-\.settings/org\.eclipse\.jdt\.core\.prefs
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
-\.settings/org\.eclipse\.wst\.common\.component
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
 
-\.settings/org\.eclipse\.wst\.common\.project\.facet\.core\.xml
-
-\.settings/
-
-WebContent/META-INF/MANIFEST\.MF
+/.settings/
