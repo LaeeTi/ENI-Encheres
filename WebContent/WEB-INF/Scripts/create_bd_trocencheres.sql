@@ -1,3 +1,7 @@
+CREATE DATABASE trocencheres;
+
+CREATE USER 'dbowner'@'localhost' IDENTIFIED BY 'user';
+GRANT ALL PRIVILEGES ON trocencheres.* TO 'dbowner'@'localhost';
 
 CREATE TABLE CATEGORIES (
     no_categorie   INTEGER NOT NULL AUTO_INCREMENT,
@@ -86,3 +90,9 @@ ALTER TABLE ARTICLES_VENDUS
 ON DELETE NO ACTION 
     ON UPDATE no action; 
 
+-- ajout de la relation entre UTILISATEURS et ENCHERES
+ALTER TABLE ENCHERES
+    ADD CONSTRAINT encheres_utilisateur_fk FOREIGN KEY ( no_utilisateur )
+        REFERENCES utilisateurs ( no_utilisateur )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
