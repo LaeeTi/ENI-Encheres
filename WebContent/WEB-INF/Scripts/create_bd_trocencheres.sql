@@ -3,26 +3,20 @@ CREATE DATABASE trocencheres;
 CREATE USER 'dbowner'@'localhost' IDENTIFIED BY 'user';
 GRANT ALL PRIVILEGES ON trocencheres.* TO 'dbowner'@'localhost';
 
+USE trocencheres;
+
 CREATE TABLE CATEGORIES (
     no_categorie   INTEGER NOT NULL AUTO_INCREMENT,
     libelle        VARCHAR(30) NOT NULL,
     CONSTRAINT categorie_pk PRIMARY KEY (no_categorie)
 );
 
-CREATE TABLE ENCHERES (
-    no_utilisateur   INTEGER NOT NULL,
-    no_article       INTEGER NOT NULL,
-    date_enchere     datetime NOT NULL,
-	montant_enchere  INTEGER NOT NULL,
-	CONSTRAINT enchere_pk PRIMARY KEY (no_utilisateur, no_article)
-);
-
 CREATE TABLE RETRAITS (
-	no_article         INTEGER NOT NULL,
+	no_retrait       INTEGER NOT NULL AUTO_INCREMENT,
     rue              VARCHAR(30) NOT NULL,
     code_postal      VARCHAR(15) NOT NULL,
     ville            VARCHAR(30) NOT NULL,
-    CONSTRAINT retrait_pk PRIMARY KEY (no_article)
+    CONSTRAINT retrait_pk PRIMARY KEY (no_retrait)
 );
 
 CREATE TABLE UTILISATEURS (
@@ -41,7 +35,6 @@ CREATE TABLE UTILISATEURS (
     CONSTRAINT utilisateur_pk PRIMARY KEY (no_utilisateur)
 );
 
-
 CREATE TABLE ARTICLES_VENDUS (
     no_article                    INTEGER NOT NULL AUTO_INCREMENT,
     nom_article                   VARCHAR(30) NOT NULL,
@@ -50,49 +43,56 @@ CREATE TABLE ARTICLES_VENDUS (
     date_fin_encheres             DATE NOT NULL,
     prix_initial                  INTEGER,
     prix_vente                    INTEGER,
-    no_utilisateur                INTEGER NOT NULL,
+	etat_vente					  CHAR(2),
+    no_utilisateur_acheteur       INTEGER,
+	no_utilisateur_vendeur		  INTEGER NOT NULL,
     no_categorie                  INTEGER NOT NULL,
+	no_retrait                    INTEGER NOT NULL,
     CONSTRAINT articles_vendus_pk PRIMARY KEY (no_article)
 );
 
+CREATE TABLE ENCHERES (
+    no_utilisateur   INTEGER NOT NULL,
+    no_article       INTEGER NOT NULL,
+    date_enchere     datetime NOT NULL,
+	montant_enchere  INTEGER NOT NULL,
+	CONSTRAINT enchere_pk PRIMARY KEY (no_utilisateur, no_article)
+);
+
 ALTER TABLE ARTICLES_VENDUS
-    ADD CONSTRAINT encheres_utilisateur_fk FOREIGN KEY ( no_utilisateur ) REFERENCES UTILISATEURS ( no_utilisateur )
+    ADD CONSTRAINT encheres_utilisateur_acheteur_fk FOREIGN KEY ( no_utilisateur_acheteur ) REFERENCES UTILISATEURS ( no_utilisateur )
 ON DELETE NO ACTION 
-    ON UPDATE no action; 
+    ON UPDATE no action 
+;
+ALTER TABLE ARTICLES_VENDUS
+    ADD CONSTRAINT encheres_utilisateur_vendeur_fk FOREIGN KEY ( no_utilisateur_vendeur ) REFERENCES UTILISATEURS ( no_utilisateur )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
+;
+ALTER TABLE ARTICLES_VENDUS
+    ADD CONSTRAINT articles_vendus_categories_fk FOREIGN KEY ( no_categorie )
+        REFERENCES categories ( no_categorie )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
+;
+ALTER TABLE ARTICLES_VENDUS
+    ADD CONSTRAINT retraits_articles_vendus_fk FOREIGN KEY ( no_retrait )
+        REFERENCES RETRAITS ( no_retrait )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
+;
+
+
 
 ALTER TABLE ENCHERES
     ADD CONSTRAINT encheres_articles_vendus_fk FOREIGN KEY ( no_article )
         REFERENCES ARTICLES_VENDUS ( no_article )
 ON DELETE NO ACTION 
-    ON UPDATE no action; 
-
-ALTER TABLE RETRAITS
-    ADD CONSTRAINT retraits_articles_vendus_fk FOREIGN KEY ( no_article )
-        REFERENCES ARTICLES_VENDUS ( no_article )
-ON DELETE NO ACTION 
-    ON UPDATE no action; 
-
-ALTER TABLE ARTICLES_VENDUS
-    ADD CONSTRAINT articles_vendus_categories_fk FOREIGN KEY ( no_categorie )
-        REFERENCES categories ( no_categorie )
-ON DELETE NO ACTION 
-    ON UPDATE no action; 
-
-ALTER TABLE ARTICLES_VENDUS
-    ADD CONSTRAINT ventes_utilisateur_fk FOREIGN KEY ( no_utilisateur )
-        REFERENCES utilisateurs ( no_utilisateur )
-ON DELETE NO ACTION 
-    ON UPDATE no action; 
-	
-ALTER TABLE ARTICLES_VENDUS
-    ADD CONSTRAINT ventes_utilisateur_fk FOREIGN KEY ( no_utilisateur )
-        REFERENCES utilisateurs ( no_utilisateur )
-ON DELETE NO ACTION 
-    ON UPDATE no action; 
-
--- ajout de la relation entre UTILISATEURS et ENCHERES
+    ON UPDATE no action 
+;
 ALTER TABLE ENCHERES
-    ADD CONSTRAINT encheres_utilisateur_fk FOREIGN KEY ( no_utilisateur )
-        REFERENCES utilisateurs ( no_utilisateur )
+    ADD CONSTRAINT encheres_utilisateurs_fk FOREIGN KEY ( no_utilisateur )
+        REFERENCES UTILISATEURS ( no_utilisateur )
 ON DELETE NO ACTION 
     ON UPDATE no action 
+;
