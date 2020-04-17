@@ -8,5 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/lmitard/Desktop/Semaine 5 - Projet Web back-end/tomcat/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lmitard/Desktop/Semaine 5 - Projet Web back-end/WorkspaceEcole/TPmodelDAOMVC/WebContent/WEB-INF/lib/joda-time-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lmitard/Desktop/Semaine 5 - Projet Web back-end/WorkspaceEcole/TPmodelDAOMVC/WebContent/WEB-INF/lib/joda-time-jsptags-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

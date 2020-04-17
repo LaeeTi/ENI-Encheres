@@ -1,7 +1,8 @@
 CREATE DATABASE trocencheres;
 
-CREATE USER 'dbowner'@'localhost' IDENTIFIED BY 'user';
+CREATE USER 'dbowner'@'localhost' IDENTIFIED BY 'Pa$$w0rd';
 GRANT ALL PRIVILEGES ON trocencheres.* TO 'dbowner'@'localhost';
+
 
 USE trocencheres;
 
