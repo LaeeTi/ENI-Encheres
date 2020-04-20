@@ -17,7 +17,7 @@ import static fr.eni.encheres.dao.DAOUtilitaire.initialisationRequetePreparee;
 
 public class ArticleVenduDaoImpl implements ArticleVenduDao {
 	private static final String SQL_INSERT        	= "INSERT INTO articles_vendus(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, etat_vente, no_utilisateur_vendeur, no_categorie, no_retrait) values (?,?,?,?,?,?,?,?,?)";
-	private static final String SQL_UPDATE        	= "UPDATE articles_vendus SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, etat_vente = ? no_utilisateur_acheteur = ?, no_categorie = ?, no_retrait = ? WHERE no_article = ?";
+	private static final String SQL_UPDATE        	= "UPDATE articles_vendus SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, etat_vente = ?, no_utilisateur_acheteur = ?, no_utilisateur_vendeur = ?, no_categorie = ?, no_retrait = ? WHERE no_article = ?";
 	private static final String SQL_SELECT_BY 	  	= "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, etat_vente, no_utilisateur_acheteur, no_utilisateur_vendeur, no_categorie, no_retrait FROM articles_vendus WHERE no_article = ?";
 	private static final String SQL_SELECT_ALL	  	= "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, etat_vente, no_utilisateur_acheteur, no_utilisateur_vendeur, no_categorie, no_retrait FROM articles_vendus ORDER BY no_article";
 	private static final String SQL_DELETE_BY 		= "DELETE FROM articles_vendus WHERE no_article = ?";
@@ -72,6 +72,11 @@ public class ArticleVenduDaoImpl implements ArticleVenduDao {
 
 		try{
 			connexion = daoFactory.getConnection();
+
+			Long no_acheteur = null;
+			if(articleVendu.getAcheteur() != null){
+				no_acheteur = articleVendu.getAcheteur().getNoUtilisateur();
+			}
 			preparedStatement  = initialisationRequetePreparee( connexion, SQL_UPDATE, true,
 			articleVendu.getNomArticle(),
 			articleVendu.getDescription(),
@@ -80,7 +85,8 @@ public class ArticleVenduDaoImpl implements ArticleVenduDao {
 			articleVendu.getMiseAPrix(),
 			articleVendu.getPrixVente(),
 			articleVendu.getEtatVente(),
-			articleVendu.getAcheteur().getNoUtilisateur(),
+			no_acheteur,
+			articleVendu.getVendeur().getNoUtilisateur(),
 			articleVendu.getCategorieArticle().getNoCategorie(),
 			articleVendu.getLieuRetrait().getNoRetrait(),
 			articleVendu.getNoArticle());

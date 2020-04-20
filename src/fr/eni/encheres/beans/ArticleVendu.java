@@ -231,4 +231,16 @@ public class ArticleVendu {
 		this.lieuRetrait = lieuRetrait;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", vendeur=" + vendeur
+				+ ", acheteur=" + acheteur + ", categorieArticle=" + categorieArticle + ", lieuRetrait=" + lieuRetrait
+				+ "]";
+	}
+
 }

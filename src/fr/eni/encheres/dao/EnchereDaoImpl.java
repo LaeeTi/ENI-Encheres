@@ -18,10 +18,10 @@ import static fr.eni.encheres.dao.DAOUtilitaire.initialisationRequetePreparee;
 
 public class EnchereDaoImpl implements EnchereDao {
 	private static final String SQL_INSERT        = "INSERT INTO encheres(no_utilisateur, no_article, date_enchere, montant_enchere) values (?,?,?,?)";
-	private static final String SQL_UPDATE        = "UPDATE encheres SET no_utilisateur = ?, no_article = ?, date_enchere = ?, montant_enchere = ? WHERE no_article = ? AND no_utilisateur = ?";
+	private static final String SQL_UPDATE        = "UPDATE encheres SET date_enchere = ?, montant_enchere = ? WHERE no_article = ? AND no_utilisateur = ?";
 	private static final String SQL_SELECT_BY 	  = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM encheres WHERE no_article = ? AND no_utilisateur = ?";
 	private static final String SQL_SELECT_ALL	  = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM encheres ORDER BY no_article, no_utilisateur ";
-	private static final String SQL_DELETE_BY    = "DELETE FROM encheres WHERE no_article = ? AND no_utilisateur = ?";
+	private static final String SQL_DELETE_BY     = "DELETE FROM encheres WHERE no_article = ? AND no_utilisateur = ?";
     private DAOFactory          daoFactory;
 
     EnchereDaoImpl( DAOFactory daoFactory ) {
@@ -63,11 +63,11 @@ public class EnchereDaoImpl implements EnchereDao {
 		try{
 			connexion = daoFactory.getConnection();
 			preparedStatement  = initialisationRequetePreparee( connexion, SQL_UPDATE, true,
-					enchere.getEncherisseur().getNoUtilisateur(),
-					enchere.getArticle().getNoArticle(),
 					new Timestamp( enchere.getDateEnchere().getMillis() ),
-					enchere.getMontantEnchere());
-			
+					enchere.getMontantEnchere(),
+					enchere.getArticle().getNoArticle(),
+					enchere.getEncherisseur().getNoUtilisateur());
+		
 			int statut = preparedStatement.executeUpdate();
             if ( statut == 0 ) {
                 throw new DAOException( "Échec de la modification de l'enchere, aucune ligne ajoutée dans la table." );
@@ -82,8 +82,8 @@ public class EnchereDaoImpl implements EnchereDao {
     
     /* Implémentation de la méthode définie dans l'interface EnchereDao */
     @Override
-    public Enchere trouver( Long noEncherisseur , Long noArticle ) throws DAOException {
-        return trouver( SQL_SELECT_BY, noEncherisseur , noArticle );
+    public Enchere trouver(  Long noArticle , Long noEncherisseur  ) throws DAOException {
+        return trouver( SQL_SELECT_BY, noArticle , noEncherisseur );
     }
     
     /* Implémentation de la méthode définie dans l'interface EnchereDao */
@@ -119,8 +119,8 @@ public class EnchereDaoImpl implements EnchereDao {
 	        try {
 	            connexion = daoFactory.getConnection();
 	            preparedStatement = initialisationRequetePreparee( connexion, SQL_DELETE_BY , true, 	
-	            		enchere.getEncherisseur().getNoUtilisateur(),
-						enchere.getArticle().getNoArticle());
+	            		enchere.getArticle().getNoArticle(),
+	            		enchere.getEncherisseur().getNoUtilisateur());
 	            int statut = preparedStatement.executeUpdate();
 	            if ( statut == 0 ) {
 	                throw new DAOException( "Échec de la suppression de l'enchere, aucune ligne supprimée de la table." );

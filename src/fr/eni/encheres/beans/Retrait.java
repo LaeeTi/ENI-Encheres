@@ -83,7 +83,13 @@ public class Retrait {
 	public void setNoRetrait(Long noRetrait) {
 		this.noRetrait = noRetrait;
 	}
-	
-	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Retrait [noRetrait=" + noRetrait + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville
+				+ "]";
+	}	
 }

@@ -13,7 +13,7 @@ import static fr.eni.encheres.dao.DAOUtilitaire.initialisationRequetePreparee;
 
 public class UtilisateurDaoImpl implements UtilisateurDao {
 	private static final String SQL_INSERT        = "INSERT INTO utilisateurs(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String SQL_UPDATE        = "UPDATE utilisateur SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur = ?";
+	private static final String SQL_UPDATE        = "UPDATE utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur = ?";
 	private static final String SQL_SELECT_PAR_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur  FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String SQL_SELECT        = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur  FROM utilisateurs ORDER BY no_utilisateur";
 	private static final String SQL_DELETE_PAR_ID = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";

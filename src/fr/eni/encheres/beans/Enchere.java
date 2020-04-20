@@ -77,8 +77,14 @@ public class Enchere {
 	public void setEncherisseur(Utilisateur encherisseur) {
 		this.encherisseur = encherisseur;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", article=" + article
+				+ ", encherisseur=" + encherisseur + "]";
+	}
 	
 	
-	
-
 }

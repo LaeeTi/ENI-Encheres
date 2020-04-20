@@ -47,7 +47,13 @@ public class Categorie {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Categorie [noCategorie=" + noCategorie + ", libelle=" + libelle + "]";
+	}
 	
 }
