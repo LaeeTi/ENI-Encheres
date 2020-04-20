@@ -2,57 +2,144 @@
 /* Général ------------------------------------------------------------------------------------- */
 
 body, p, legend, label, input {
-    font: normal 8pt verdana, helvetica, sans-serif;
+    font: normal 12px verdana, helvetica, sans-serif;
 }
 
 div {
 	display: flex;
 }
 
+body {
+	margin: 10px;
+}
+
+/* Header -------------------------------------------------------------------------------------- */
 header {
-	width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .top {
 	flex-direction: row;
-}
-
-.logo .menu {
-	width: 50%;
-}
-
-.titre_page {
 	width: 100%;
 }
 
+.logo, .menu {
+	width: 50%;
+}
+
+.logo p{
+	font-size: 1.2em;
+}
+
+.menu p {
+	width: 100%;
+	text-align: right;
+}
+
+.titre-page h1{
+	width: 100%;
+	text-align: center;
+	font-size : 1.1em;
+}
+
 /* Forms --------------------------------------------------------------------------------------- */
-fieldset {
-    padding: 10px;
-    border: 1px #0568CD solid;
-    margin: 10px;
-}
-
-legend {
-    font-weight: bold;
-    color: #0568CD;
-}
-
-form label {
-    float: left;
-    width: 200px;
-    margin: 3px 0px 0px 0px;
+.form {
+	padding : 1em;
+	width: 800px;
+	flex-direction: row;
+	justify-content: center;
+	margin: auto;
 }
 
 form input {
-    margin: 3px 3px 0px 0px;
-    border: 1px #999 solid;
+	height: 30px;	
 }
 
-form input.sansLabel {
-    margin-left: 200px;
+.filtres{
+	flex-direction: column;
+	width: 60%;
 }
+
+.search {
+	margin-top: 20px;
+	width: 305px;
+	height: 30px;
+	border: 1px solid;
+	border-radius: 20px;
+}
+
+.search img {
+	height: 10px;
+	margin: auto 5px;
+}
+
+.search input{
+	margin: auto;
+	width: 305px;
+	height: 30px;
+	border: none;
+	border-radius: 20px;
+	font-size: 1.2em;
+}
+
+.categorie{
+	margin-top: 20px;
+	flex-direction: row;
+}
+
+.categorie select {
+	margin-left: 40px;
+	width: 200px;
+}
+
+.radio-type{
+	margin-top: 20px;
+	flex-direction: row;
+}
+
+.checkboxes{
+	flex-direction: column;
+}
+
+.checkboxes input{
+	height: auto;
+	margin: auto 5px auto 0px;
+} 
+
+input[type="checkbox"]{
+	margin: auto 5px auto 30px;	
+}
+
+.checkboxes label{
+	vertical-align: center;
+}
+
+.checkboxes span{
+	height: 25px;
+}
+
+.titre {
+    font-weight: bold;
+    font-size : 1.1em;
+    width: 100%;
+}
+
+.bouton-rechercher {
+	width: 40%;
+	justify-content: center;
+	align-items: center;
+}
+
+.bouton-rechercher input{
+	height: 80px;
+	width: 180px;
+	border: 1px solid;
+	background: none;
+	cursor: pointer;
+	box-shadow: 4px 4px 2px black;
+}
+
 
 /* Styles et couleurs -------------------------------------------------------------------------- */
 .requis {
@@ -72,17 +159,6 @@ form input.sansLabel {
     color: #E8A22B;
 }
 
-/* Blocs constituants -------------------------------------------------------------------------- */
-div#menu{
-	border: 1px solid #0568CD;
-	padding: 10px;
-	margin: 10px;
-}
-div#corps{
-	margin: 10px;
-}
-
-...
 
 /* Tableaux -------------------------------------------------------------------------------------*/
 table{
