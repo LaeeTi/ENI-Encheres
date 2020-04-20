@@ -184,7 +184,7 @@ public class testDao extends HttpServlet {
 		    /******************************************Test envoi paramètres****************************************************************/
 		    request.setAttribute( "categories", categories );
 		    request.setAttribute( "encheres", encheres );
-	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
+	    	//this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
 	    }   
 	    
 	    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {   
@@ -223,7 +223,7 @@ public class testDao extends HttpServlet {
         }
     
         request.setAttribute( "categories", categories );
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
+       // this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
 	    
 
 	    }

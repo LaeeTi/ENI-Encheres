@@ -17,6 +17,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	private static final String SQL_SELECT_PAR_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur  FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String SQL_SELECT        = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur  FROM utilisateurs ORDER BY no_utilisateur";
 	private static final String SQL_DELETE_PAR_ID = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
+	// private static final String SQL_CONNEXION     = "SELECT pseudo, email FROM utilisateurs";
 
     private DAOFactory          daoFactory;
 
@@ -201,4 +202,34 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         utilisateur.setAdministrateur( resultSet.getBoolean( "administrateur" ) );
         return utilisateur;
     }
+
+    /*
+	@Override
+	public connexion(String pseudo, String motdepasse) throws DAOException {		
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		Utilisateur utilisateur = null;
+		boolean connexionValide = false;
+		
+		try{
+			connexion = daoFactory.getConnection();
+			
+			preparedStatement = initialisationRequetePreparee( connexion, SQL_CONNEXION, true, utilisateur.getPseudo(), utilisateur.getMotDePasse() );
+            resultSet = preparedStatement.executeQuery();
+            // Parcours de la ligne de données retournée dans le ResultSet 
+            if ( resultSet.next() ) {
+                utilisateur = map( resultSet );
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+        }
+		
+		
+		return connexionValide;
+	}
+	*/
+	
 }

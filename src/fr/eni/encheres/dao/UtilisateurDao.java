@@ -14,5 +14,6 @@ public interface UtilisateurDao {
     List<Utilisateur> lister() throws DAOException;
 
     void supprimer( Utilisateur utilisateur ) throws DAOException;
-
+    
+   // Utilisateur connexion(String pseudo, String motdepasse);
 }
