@@ -23,9 +23,9 @@
 			<h1>Liste des enchères</h1>
 		</div>	
 	</header>
-	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
+	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/aAccueil")) --%>
 	
-	<form method="post" action="<c:url value="/testDao"></c:url>">
+	<form method="post" action="<c:url value="/rechercherEncheres"></c:url>">
 	<div class="form">	
 		<div class="filtres">
 			<div class="titre">Filtres :</div>
