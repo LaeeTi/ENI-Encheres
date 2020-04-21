@@ -99,47 +99,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     @Override
     public Utilisateur trouver( long noUtilisateur ) throws DAOException {
         return trouver( SQL_SELECT_PAR_ID, noUtilisateur );
-    }
-    
-    public Utilisateur rechercher (String pseudo, String motDePasse) throws DAOException {
-    	Utilisateur utilisateur = new Utilisateur();
-    	Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		try{
-			connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement( SQL_CONNEXION );      
-            preparedStatement.setString(1, pseudo);
-            preparedStatement.setString(2, motDePasse);
-            resultSet = preparedStatement.executeQuery();
-            
-        if(resultSet.next())
-        {
-        	utilisateur.setNoUtilisateur( resultSet.getLong( "no_utilisateur" ) );
-            utilisateur.setPseudo(pseudo);
-            utilisateur.setNom( resultSet.getString( "nom" ) );
-            utilisateur.setPrenom( resultSet.getString( "prenom" ) );
-            utilisateur.setEmail( resultSet.getString( "email" ) );
-            utilisateur.setTelephone( resultSet.getString( "telephone" ) );
-            utilisateur.setRue( resultSet.getString( "rue" ) );
-            utilisateur.setCodePostal( resultSet.getString( "code_postal" ) );
-            utilisateur.setVille( resultSet.getString( "ville" ) );
-            utilisateur.setMotDePasse( motDePasse );
-            utilisateur.setCredit( resultSet.getInt( "credit" ) );
-            utilisateur.setAdministrateur( resultSet.getBoolean( "administrateur" ) );
-        } 
-        else {
-        	utilisateur = null;
-        	}
-		} catch ( SQLException e ) {
-            throw new DAOException( e );    
-		} finally {
-			fermeturesSilencieuses( resultSet, preparedStatement, connection );
-		} 
-		return utilisateur;
-    }
-    
+    }  
     
     /* Impl�mentation de la m�thode d�finie dans l'interface ClientDao */
     @Override

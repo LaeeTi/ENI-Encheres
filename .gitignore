@@ -24,3 +24,7 @@ hs_err_pid*
 
 /.settings/
 /build/
+
+\.classpath
+
+src/fr/eni/encheres/dao/dao\.properties
