@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edition Profil</title>
+<link type="text/css" rel="stylesheet" href="inc/style.css" />
 </head>
 <body>
 		<p>Page d'édtion de profile</p>

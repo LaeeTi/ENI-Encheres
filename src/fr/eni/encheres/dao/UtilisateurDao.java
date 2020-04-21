@@ -1,5 +1,6 @@
 package fr.eni.encheres.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import fr.eni.encheres.beans.Utilisateur;
 
@@ -14,6 +15,8 @@ public interface UtilisateurDao {
     List<Utilisateur> lister() throws DAOException;
 
     void supprimer( Utilisateur utilisateur ) throws DAOException;
+    
+    Utilisateur rechercher (String pseudo, String motDePasse) throws DAOException;
     
    // Utilisateur connexion(String pseudo, String motdepasse);
 }

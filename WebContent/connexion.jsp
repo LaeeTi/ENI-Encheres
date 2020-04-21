@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Connexion</title>
+<link type="text/css" rel="stylesheet" href="inc/style.css" />
+
 </head>
 <body>
 	<header>
@@ -14,16 +16,7 @@
 		</div></div>
 	</header>
 	
-	<%
-		String pseudo = request.getParameter("pseudo");
-		if (pseudo==null) pseudo="";
-		String mdp = request.getParameter("motdepasse");
-		if (mdp==null) mdp="";
-		String messageErreur = (String)request.getAttribute("messageErreur");
-		if (messageErreur==null) messageErreur="";
-	%>
-	
-	<form class="connexion" action="<%=request.getContextPath()%>/accueil" method="post">
+	<form class="connexion" action="connexion" method="post">
 		<div class="bloc_identifiant"></div>
 			<label for="pseudo"> Pseudo : </label>
 			<input class="champtexte" type="text" name="pseudo" id="pseudo"/>
@@ -51,9 +44,6 @@
 		
 		<p> <a href="/connexion">Mot de passe oublié</a> </p>
 		
-		<% if (!"".equals(messageErreur)) { %>
-		<div><p><%=messageErreur%></p></div>
-		<% } %>
 		
 	</form>
 </body>
