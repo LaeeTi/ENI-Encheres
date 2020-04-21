@@ -8,6 +8,6 @@
 <link type="text/css" rel="stylesheet" href="inc/style.css" />
 </head>
 <body>
-		<p>Page d'ï¿½dtion de profile</p>
+		<p>Page d'édtion de profile</p>
 </body>
 </html>

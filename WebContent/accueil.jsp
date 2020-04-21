@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Accueil</title>
-<link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"></c:url>" />
+<link type="text/css" rel="stylesheet" href=<c:url value="/inc/style.css"></c:url> />
 </head>
 <body>
 	<header>
@@ -23,9 +23,9 @@
 			<h1>Liste des enchères</h1>
 		</div>	
 	</header>
-	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/aAccueil")) --%>
+	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
 	
-	<form method="post" action="<c:url value="/rechercherEncheres"></c:url>">
+	<form method="post" action="<c:url value="/accueil"></c:url>">
 	<div class="form">	
 		<div class="filtres">
 			<div class="titre">Filtres :</div>

@@ -1,5 +1,6 @@
 package fr.eni.encheres.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import fr.eni.encheres.beans.Utilisateur;
 
