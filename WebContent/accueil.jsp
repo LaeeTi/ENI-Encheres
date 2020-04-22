@@ -27,7 +27,7 @@
 	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
 	
 	<form method="post" action="<c:url value="/rechercherArticleVendus"></c:url>">
-	<div class="form">	
+	<div class="liste-ventes">	
 		<div class="filtres">
 			<div class="titre">Filtres :</div>
 			<div class=search>
