@@ -21,7 +21,7 @@ public class Connexion extends HttpServlet {
 	private DAOFactory daoFactory;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/connexion.jsp" ).forward( request, response );
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +45,7 @@ public class Connexion extends HttpServlet {
 			
 			String message = "Les champs Identifiant et Mot de passe sont obligatoires";
 			request.setAttribute("messageErreur", message);
-			this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexion.jsp" ).forward( request, response );
 			return;
 		}
 		
@@ -67,7 +67,7 @@ public class Connexion extends HttpServlet {
 		// Si l'authenification est réussie...
 		if (utilisateurConnecte != null) {
 			// Présenter la réponse
-			response.sendRedirect("./accueil.jsp");
+			response.sendRedirect(request.getContextPath() + "/accueil");
 			return;
 		}
 		// ...sinon
@@ -75,7 +75,7 @@ public class Connexion extends HttpServlet {
 			// Retourner à l'écran d'identification avec un message d'erreur fonctionnel			
 			String message = "Identifiant ou mot de passe incorrect";
 			request.setAttribute("messageErreur", message);
-			this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexion.jsp" ).forward( request, response );
 			}
 	}
 }
