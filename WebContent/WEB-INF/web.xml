@@ -17,13 +17,21 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>Accueil</servlet-name>
     <servlet-class>fr.eni.encheres.servlets.Accueil</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Accueil</servlet-name>
     <url-pattern>/accueil</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CreerProfil</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.CreerProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreerProfil</servlet-name>
+    <url-pattern>/creationProfil</url-pattern>
   </servlet-mapping>
 </web-app>

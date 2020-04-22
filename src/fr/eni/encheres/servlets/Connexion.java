@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +21,7 @@ public class Connexion extends HttpServlet {
 	private DAOFactory daoFactory;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		valider(request, response);
+		this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,12 +34,12 @@ public class Connexion extends HttpServlet {
 		
 		Utilisateur utilisateurConnecte = null;
 			
-		// Rï¿½cupï¿½ration des informations saisies dans le formulaire
+		// Récupération des informations saisies dans le formulaire
 		String pseudo = request.getParameter("pseudo");
 		String motdepasse = request.getParameter("motdepasse");
 
 		// Controle des informations :
-		// si tous les champs ne sont pas renseignï¿½s, revenir sur la page du formulaire
+		// si tous les champs ne sont pas renseignés, revenir sur la page du formulaire
 		if (   (pseudo == null) || (pseudo.length() == 0) 
 			|| (motdepasse == null) || (motdepasse.length() == 0)) {
 			
@@ -65,15 +64,15 @@ public class Connexion extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("utilisateurConnecte", utilisateurConnecte);
 	
-		// Si l'authenification est rï¿½ussie...
+		// Si l'authenification est réussie...
 		if (utilisateurConnecte != null) {
-			// Prï¿½senter la rï¿½ponse
+			// Présenter la réponse
 			response.sendRedirect("./accueil.jsp");
 			return;
 		}
 		// ...sinon
 		else {
-			// Retourner ï¿½ l'ï¿½cran d'identification avec un message d'erreur fonctionnel			
+			// Retourner à l'écran d'identification avec un message d'erreur fonctionnel			
 			String message = "Identifiant ou mot de passe incorrect";
 			request.setAttribute("messageErreur", message);
 			this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );

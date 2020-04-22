@@ -16,17 +16,23 @@
 		</div></div>
 	</header>
 	
+	<%
+		String messageErreur = (String)request.getAttribute("messageErreur");
+		if (messageErreur==null) messageErreur="";
+	%>
+	
+	
 	<form class="connexion" action="connexion" method="post">
-		<div class="bloc_identifiant"></div>
-			<label for="pseudo"> Pseudo : </label>
+		<div class="bloc_identifiant">
+			<label for="pseudo"> Identifiant : </label>
 			<input class="champtexte" type="text" name="pseudo" id="pseudo"/>
 		</div>	
 		
-		<div class="bloc_motdepasse"></div>
-			<label for="motdepasse">Mot de passe</label>
+		<div class="bloc_motdepasse">
+			<label for="motdepasse">Mot de passe : </label>
 			<input class="champtexte" type="password"  id="motdepasse" name="motdepasse"/>
-		</div>	
-		
+		</div>
+			
 			
 		<div class="bloc_connexion">
 			<input type="submit" id="connexion" value="Connexion" />
@@ -35,16 +41,23 @@
 		<div class="bloc_inscription">
 			<input type="submit" id="inscription" value="Créer un compte" />
 		</div>
-		</form>
-		
-		<div>
+	
+		<div>   
  			 <input type="checkbox" id="enregistrement_profil" name="enregistrement_profil">
  			 <label for="horns">Se souvenir de moi</label>
 		</div>
+	</form>
 		
 		<p> <a href="/connexion">Mot de passe oublié</a> </p>
 		
-		
+		<div class="erreur">
+		<% if (!"".equals(messageErreur)) { %>
+			<div>
+				<p><%=messageErreur%></p>
+			</div>
+			<% } %>
+		</div>	
+			
 	</form>
 </body>
 </html>

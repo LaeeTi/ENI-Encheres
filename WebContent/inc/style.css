@@ -50,10 +50,31 @@ header {
 	flex-direction: row;
 	justify-content: center;
 	margin: auto;
+	padding: 1em;
+}
+
+form div + div {
+  margin-top: 1em;
 }
 
 form input {
-	height: 30px;	
+	height: 20px;	
+}
+
+label {
+  display: inline-block;
+  width: 90px;
+  text-align: left;
+}
+
+input, textarea {
+  width: 150px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+  border-color: #000;
 }
 
 .filtres{
@@ -140,6 +161,37 @@ input[type="checkbox"]{
 	box-shadow: 4px 4px 2px black;
 }
 
+.bloc_inscription {
+	width: 40%;
+	justify-content: center;
+	align-items: center;
+}
+
+.bloc_inscription input{
+	margin-top: 20px;
+	height: 80px;
+	width: 180px;
+	border: 1px solid;
+	background: none;
+	cursor: pointer;
+	box-shadow: 4px 4px 2px black;
+}
+
+.bloc_connexion {
+	width: 40%;
+	justify-content: center;
+	align-items: center;
+}
+
+.bloc_connexion input{
+	margin-top: 20px;
+	height: 60px;
+	width: 100px;
+	border: 1px solid;
+	background: none;
+	cursor: pointer;
+	box-shadow: 4px 4px 2px black;
+}
 
 /* Styles et couleurs -------------------------------------------------------------------------- */
 .requis {
