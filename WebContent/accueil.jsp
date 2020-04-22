@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,16 +17,16 @@
 			<p>ENI-Enchères</p>
 		</div>
 		<div class="menu">
-			<p><a href="<c:url value=""/>">S'inscrire - se connecter</a></p>
+			<p><a href="<c:url value="/connexion"/>">S'inscrire - se connecter</a></p>
 		</div>
 		</div>
 		<div class="titre-page">
-			<h1>Liste des enchères</h1>
+			<h1>Liste des enchères (<c:out value="${ sessionScope.utilisateurConnecte.pseudo }"></c:out>)</h1>
 		</div>	
 	</header>
 	 <%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
 	
-	<form method="post" action="<c:url value="/accueil"></c:url>">
+	<form method="post" action="<c:url value="/rechercherArticleVendus"></c:url>">
 	<div class="form">	
 		<div class="filtres">
 			<div class="titre">Filtres :</div>
@@ -71,27 +72,41 @@
 	</div>
 	</form>
 	<div class="liste_enchere">
-		<div class="enchere_miniature"></div>
+		<c:forEach items="${ articlesAffiches }" var="article">
+                   <div class="enchere-miniature">
+
+                   <p><a href="<c:url value="/vente.jsp"/>"> <c:out value="${ article.value.nomArticle }"></c:out></a></p>
+                   <p>Prix : <c:out value="${ article.value.miseAPrix }"></c:out> points</p>
+                   
+                   <p>Fin de l'enchère : <joda:format value="${ article.value.dateFinEncheres}" pattern="dd/MM/yyyy"></joda:format> </p>
+                   <p>Vendeur : <c:out value="${ article.value.vendeur.pseudo }"></c:out></p>
+                   </div>
+		</c:forEach>
+
 	</div>
 	   <script src="<c:url value="/inc/jquery.js"></c:url>"></script>
         
         <%-- Petite fonction jQuery permettant d'inactiver les checkboxes du bouton radio non choisi. --%>
         <script>
         	jQuery(document).ready(function(){
-        		/* 1 - Au lancement de la page, on cache le bloc d'éléments du formulaire correspondant aux clients existants */
-        		    $("input.input-ventes").prop("disabled", true);
+
         		/* 2 - Au clic sur un des deux boutons radio "choixNouveauClient", on affiche le bloc d'éléments correspondant (nouveau ou ancien client) */
                 jQuery('input[name=type]:radio').click(function(){
-                	$("input-ventes, input-achats").prop("disabled", true);
+                	$("input.input-ventes, input.input-achats").prop("disabled", true);
+                	
                     var valRadio = jQuery(this).val();
                     $("input.input-"+ valRadio).prop("disabled", false);
                     if(valRadio == "achats"){
-                    	$("input.input-ventes").prop("checked", false);	
+                    	$("input.input-ventes").prop("checked", false);
+                    	$("label.input-ventes").addClass("grisee");
+                    	$("label.input-achats").removeClass("grisee");
                     } else if(valRadio == "ventes"){
                     	$("input.input-achats").prop("checked", false);
+                    	$("label.input-achats").addClass("grisee");
+                    	$("label.input-ventes").removeClass("grisee");
                     }
                 });
             });
-        </script>	
+        </script>
 </body>
 </html>

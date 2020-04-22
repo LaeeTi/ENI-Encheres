@@ -132,10 +132,9 @@ input[type="checkbox"]{
 	margin: auto 5px auto 30px;	
 }
 
-.checkboxes label{
-	vertical-align: center;
+.grisee {
+	color: grey;
 }
-
 .checkboxes span{
 	height: 25px;
 }
@@ -209,6 +208,13 @@ input[type="checkbox"]{
 .info {
     font-style: italic;
     color: #E8A22B;
+}
+
+
+/* Vignette article -----------------------------------------------------------------------------*/
+
+.enchere-miniature {
+	flex-direction: column;
 }
 
 

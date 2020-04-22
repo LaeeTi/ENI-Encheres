@@ -49,23 +49,34 @@ public class testDao extends HttpServlet {
 	    	
 
 	        //Initialisation de la date du jour
-	    	DateTime dt= new DateTime();
+	    	DateTime dt = new DateTime();
+	    	
 	        
 	    	/*******************************************Test des methodes creer********************************************************/
 	    	//Création d'une instance objetDao via la DAOFactory qui va nous servir pour créer les objets
 	        this.utilisateurDao = daoFactory.getUtilisateurDao();
 	        //Creation d'un objet (bean)
-	        Utilisateur vendeur = new Utilisateur("vendeur", "nom", "prenom", "email", "telephone", "rue",
-	    			"cp", "ville", "motDePasse", 0, true);
+	        Utilisateur user1 = new Utilisateur("user1", "nom", "prenom", "email", "telephone", "rue",
+	    			"cp", "ville", "a", 0, false);
 	        //Creation de l'objet en base de donnée via la methode creer de l'objet DAO
-	        utilisateurDao.creer(vendeur);
+	        utilisateurDao.creer(user1);
 	        //Ajout d'autres objets
-	        Utilisateur acheteur = new Utilisateur("acheteur", "nom1", "prenom1", "email1", "telephone1", "rue1",
-	    			"cp1", "ville1", "motDePasse1", 0, false);
-	        utilisateurDao.creer(acheteur);
-	        Utilisateur encherisseur = new Utilisateur("encherisseur", "nom2", "prenom2", "email2", "telephone2", "rue2",
+	        Utilisateur user2 = new Utilisateur("user2", "nom1", "prenom1", "email1", "telephone1", "rue1",
+	    			"cp1", "ville1", "a", 0, false);
+	        utilisateurDao.creer(user2);
+	        Utilisateur user3 = new Utilisateur("user3", "nom2", "prenom2", "email2", "telephone2", "rue2",
 	    			"cp2", "ville2", "motDePasse2", 0, false);
-	        utilisateurDao.creer(encherisseur);
+	        utilisateurDao.creer(user3);
+	        Utilisateur administrateur = new Utilisateur("a", "admin", "adm", "email2", "telephone2", "rue2",
+	    			"cp2", "ville2", "a", 0, true);
+	        utilisateurDao.creer(administrateur);
+	        Utilisateur user4 = new Utilisateur("user4", "vendeur", "adm", "email2", "telephone2", "rue2",
+	    			"cp2", "ville2", "a", 0, false);
+	        utilisateurDao.creer(user4);
+	        Utilisateur user5 = new Utilisateur("user5", "vendeur", "adm", "email2", "telephone2", "rue2",
+	    			"cp2", "ville2", "a", 0, false);
+	        utilisateurDao.creer(user5);
+	        
 	        
  
 	        //idem pour les autres types d'objet
@@ -83,32 +94,74 @@ public class testDao extends HttpServlet {
 	        Retrait retrait = new Retrait("rue", "79000", "Niort");
 	        retraitDao.creer(retrait);
 	        
+	        this.retraitDao = daoFactory.getRetraitDao();
+	        Retrait retrait2 = new Retrait("rue2", "79000", "Niort");
+	        retraitDao.creer(retrait2);
+	        
+	        this.retraitDao = daoFactory.getRetraitDao();
+	        Retrait retrait3 = new Retrait("rue2", "79000", "Niort");
+	        retraitDao.creer(retrait3);
+	        
 	        this.articleDao = daoFactory.getArticleVenduDao();
-	        ArticleVendu article1 = new ArticleVendu("article1", "test", dt, dt, 50, "EC", vendeur, informatique , retrait);
+	        ArticleVendu article1 = new ArticleVendu("clavier", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,05,25,0,0), 50, "EC", user1, informatique , retrait);
 	        articleDao.creer(article1);
 	        
 	        this.articleDao = daoFactory.getArticleVenduDao();
-	        ArticleVendu article2 = new ArticleVendu("article2", "test", dt, dt, 50, "EC", vendeur, sportLoisirs , retrait);
+	        ArticleVendu article2 = new ArticleVendu("velo", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,04,12,0,0), 50, "TE", user1, sportLoisirs , retrait);
 	        articleDao.creer(article2);
 	        
 	        this.articleDao = daoFactory.getArticleVenduDao();
-	        ArticleVendu article3 = new ArticleVendu("article3", "test", dt, dt, 50, "TE", vendeur, ameublement , retrait);
+	        ArticleVendu article3 = new ArticleVendu("buffet", "test", new DateTime(2020,04,25,0,0), new DateTime(2020,05,25,0,0), 50, "ND", user1, ameublement , retrait);
 	        articleDao.creer(article3);
 	        
 	        this.articleDao = daoFactory.getArticleVenduDao();
-	        ArticleVendu article4 = new ArticleVendu("article4", "test", dt, dt, 50, "TE", vendeur, vetement , retrait);
+	        ArticleVendu article4 = new ArticleVendu("robe", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,05,25,0,0), 50, "EC", user2, vetement , retrait);
 	        articleDao.creer(article4);
+	        
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article5 = new ArticleVendu("ordinateur", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,04,12,0,0), 50, "TE", user2, informatique , retrait);
+	        articleDao.creer(article5);
+	        
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article6 = new ArticleVendu("buffet", "test", new DateTime(2020,04,25,0,0), new DateTime(2020,05,25,0,0), 50, "ND", user2, sportLoisirs , retrait);
+	        articleDao.creer(article6);
+	        
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article7 = new ArticleVendu("table", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,05,25,0,0), 50, "EC", user2, ameublement , retrait);
+	        articleDao.creer(article7);
+	        
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article8 = new ArticleVendu("pentalon", "test", new DateTime(2020,03,25,0,0), new DateTime(2020,04,12,0,0), 50, "TE", user1, vetement , retrait);
+	        articleDao.creer(article8);
+	        
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article9 = new ArticleVendu("souris", "test", new DateTime(2020,04,25,0,0), new DateTime(2020,05,25,0,0), 50, "EC", user1, informatique , retrait);
+	        articleDao.creer(article9);
+	       
+	        this.articleDao = daoFactory.getArticleVenduDao();
+	        ArticleVendu article10 = new ArticleVendu("souris", "test", new DateTime(2020,04,25,0,0), new DateTime(2020,05,25,0,0), 50, "EC", user1, informatique , retrait);
+	        articleDao.creer(article10);
+	        
 	        
 	        
 	        this.enchereDao = daoFactory.getEnchereDao();
-	        Enchere enchere = new Enchere(dt, 100 , article1 ,encherisseur);
-	        enchereDao.creer(enchere);
+	        Enchere enchere1 = new Enchere(new DateTime(2020,03,27,0,0), 100 , article2 ,user2);
+	        enchereDao.creer(enchere1);
+	        Enchere enchere2 = new Enchere(new DateTime(2020,03,27,0,0), 100 , article5 ,user1);
+	        enchereDao.creer(enchere2);
+	        Enchere enchere3 = new Enchere(new DateTime(2020,03,27,0,0), 100 , article8 ,user2);
+	        enchereDao.creer(enchere3);
+	        Enchere enchere4 = new Enchere(new DateTime(2020,03,25,0,0), 100 , article1 ,user2);
+	        enchereDao.creer(enchere4);
+	        Enchere enchere5 = new Enchere(new DateTime(2020,03,25,0,0), 100 , article4 ,user1);
+	        enchereDao.creer(enchere5);
+	        Enchere enchere6 = new Enchere(new DateTime(2020,03,25,0,0), 100 , article4 ,user3);
+	        enchereDao.creer(enchere6);
 	        
 	        /*******************************************Test des methodes modifier********************************************************/
 	        
-	        vendeur.setNom("vendeur modifié");
-	        vendeur.setCredit(100);
-	        utilisateurDao.modifier(vendeur);
+	        user3.setCredit(100);
+	        utilisateurDao.modifier(user3);
 	        
 	        Categorie ajout = new Categorie("ajout");
 	        categorieDao.creer(ajout);
@@ -118,16 +171,21 @@ public class testDao extends HttpServlet {
 	        retrait.setRue("26 Rue Irène Joliot Curie");
 	        retraitDao.modifier(retrait);
 	        
-	        article1.setEtatVente("OK");
+	        article9.setEtatVente("ND");
 	        articleDao.modifier(article1);
 	        
-	        article1.setAcheteur(acheteur);
-	        article1.setPrixVente(300);
-	        article1.setEtatVente("VE");
-	        articleDao.modifier(article1);
+	        article2.setAcheteur(user2);
+	        article2.setPrixVente(300);
+	        articleDao.modifier(article2);
+	        article5.setAcheteur(user1);
+	        article5.setPrixVente(500);
+	        articleDao.modifier(article5);
+	        article8.setAcheteur(user2);
+	        article8.setPrixVente(700);
+	        articleDao.modifier(article8);
 	                
-	        enchere.setMontantEnchere(300);
-	        enchereDao.modifier(enchere);
+	        enchere4.setMontantEnchere(300);
+	        enchereDao.modifier(enchere4);
 	        
 	        /*******************************************Test des methodes lister********************************************************/
 	        System.out.println("Liste des utilisateurs :");
@@ -158,7 +216,7 @@ public class testDao extends HttpServlet {
 	        
 	        
 	        /*******************************************Test des methodes trouver********************************************************/
-		    Utilisateur utilisateurTrouve = utilisateurDao.trouver(acheteur.getNoUtilisateur());
+		    Utilisateur utilisateurTrouve = utilisateurDao.trouver(user1.getNoUtilisateur());
 		    System.out.println(utilisateurTrouve.toString());
 		    
 		    Categorie catTrouvee = categorieDao.trouver(informatique.getNoCategorie());
@@ -170,15 +228,15 @@ public class testDao extends HttpServlet {
 		    ArticleVendu artTrouve = articleDao.trouver(article1.getNoArticle());
 		    System.out.println(artTrouve.toString());
 		    
-		    Enchere enchereTrouvee = enchereDao.trouver(enchere.getArticle().getNoArticle(),enchere.getEncherisseur().getNoUtilisateur());
+		    Enchere enchereTrouvee = enchereDao.trouver(enchere1.getArticle().getNoArticle(),enchere1.getEncherisseur().getNoUtilisateur());
 		    System.out.println(enchereTrouvee);
 		    
 		    /*******************************************Test des methodes supprimer********************************************************/
-		    utilisateurDao.supprimer(vendeur);
+		    utilisateurDao.supprimer(user5);
 		    categorieDao.supprimer(ajout);
-		    retraitDao.supprimer(retrait);
-		    enchereDao.supprimer(enchere);
-		    articleDao.supprimer(article1);
+		    retraitDao.supprimer(retrait3);
+		    enchereDao.supprimer(enchere6);
+		    articleDao.supprimer(article10);
 		    
 		    
 		    /******************************************Test envoi paramètres****************************************************************/

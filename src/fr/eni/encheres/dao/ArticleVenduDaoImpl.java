@@ -209,7 +209,7 @@ public class ArticleVenduDaoImpl implements ArticleVenduDao {
 		 *methode trouver pour récupérer dans la base, l'utilisateur avec le no_utilisateur souhaité
          */
         UtilisateurDao acheteurDao = daoFactory.getUtilisateurDao();
-        articleVendu.setVendeur( acheteurDao.trouver(resultSet.getInt( "no_utilisateur_acheteur" ) ) );
+        articleVendu.setAcheteur( acheteurDao.trouver(resultSet.getInt( "no_utilisateur_acheteur" ) ) );
 
         /*
 		 *Création d'un objet vendeurDao à partir de la DAOFactory et utilisation de sa
