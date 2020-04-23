@@ -16,19 +16,19 @@
 		</div></div>
 	</header>
 
-	<div id="corps">
-            <p class="info">${ form.resultat }</p>
-            <p>Pseudo : <c:out value="${ utilisateur.pseudo }"/></p>
-            <p>Nom : <c:out value="${ utilisateur.nom }"/></p>
-            <p>Prénom : <c:out value="${ utilisateur.prenom }"/></p>
-            <p>Email : <c:out value="${ utilisateur.email }"/></p>
-            <p>Téléphone : <c:out value="${ utilisateur.telephone }"/></p>
-            <p>Rue : <c:out value="${ utilisateur.rue }"/></p>
-            <p>Code postal : <c:out value="${ utilisateur.codePostal }"/></p>
-            <p>Ville : <c:out value="${ utilisateur.ville }"/></p>
-        </div>
+	<div id="bloc-afficher-profil">
+            <p>Pseudo : <c:out value="${ utilisateurAffiche.pseudo }"/></p>
+            <p>Nom : <c:out value="${ utilisateurAffiche.nom }"/></p>
+            <p>Prénom : <c:out value="${ utilisateurAffiche.prenom }"/></p>
+            <p>Email : <c:out value="${ utilisateurAffiche.email }"/></p>
+            <p>Téléphone : <c:out value="${ utilisateurAffiche.telephone }"/></p>
+            <p>Rue : <c:out value="${ utilisateurAffiche.rue }"/></p>
+            <p>Code postal : <c:out value="${ utilisateurAffiche.codePostal }"/></p>
+            <p>Ville : <c:out value="${ utilisateurAffiche.ville }"/></p>
+    </div>
 	
-	
+	Num utilisateur affiché<c:out value="${ utilisateurAffiche.noUtilisateur }"/>
+	Num utilisateur connecté<c:out value="${ utilisateurConnecte.noUtilisateur }"/>
 	
 </body>
 </html>

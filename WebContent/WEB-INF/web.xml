@@ -36,7 +36,14 @@
     <servlet-name>CreerProfil</servlet-name>
     <url-pattern>/creationProfil</url-pattern>
   </servlet-mapping>
- 
+    <servlet>
+    <servlet-name>AfficherProfil</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.AfficherProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AfficherProfil</servlet-name>
+    <url-pattern>/afficherProfil</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>PrechargementFilter</filter-name>
     <filter-class>fr.eni.encheres.filters.PrechargementFilter</filter-class>

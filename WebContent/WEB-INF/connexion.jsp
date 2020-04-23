@@ -13,7 +13,7 @@
 	<header>
 		<div class="top">
 		<div class="logo">
-			<p>ENI-Enchï¿½res</p>
+			<p>ENI-Enchères</p>
 		</div></div>
 	</header>
 	
@@ -38,7 +38,7 @@
 			<div class="bloc-droit">   
  			 	<span><input type="checkbox" id="enregistrement_profil" name="enregistrement_profil">
  			 	<label for="horns">Se souvenir de moi</label></span>
- 			 	<span><a href="/connexion">Mot de passe oubliï¿½</a> </span>
+ 			 	<span><a href="/connexion">Mot de passe oubliïé</a> </span>
 			</div>
 		</div>	
 	</form>
@@ -51,7 +51,7 @@
 			<% } %>
 		</div>	
 		<div class="bloc-inscription">
-		<a href="<c:url value="/creationProfil"/>"><input type="button" id="inscription" value="Crï¿½er un compte" /></a>
+		<a href="/creationProfil"><input type="button" id="inscription" value="Créer un compte" /></a>
 		</div>
 	</div>		
 </body>

@@ -137,7 +137,7 @@
 					Vendeur : <c:out value="${ article.value.vendeur.pseudo }"></c:out>
 				</c:if>
 				<c:if test="${ not empty utilisateurConnecte }">
-					Vendeur : <a href="<c:url value="/utilisateur/afficherProfil.jsp?noUtilisateur=${ article.value.vendeur.noUtilisateur }"/>"><c:out
+					Vendeur : <a href="<c:url value="/afficherProfil?noUtilisateur=${ article.value.vendeur.noUtilisateur }"/>"><c:out
 							value="${ article.value.vendeur.pseudo }"></c:out></a>
 				</c:if>	
 				</p>
