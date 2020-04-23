@@ -13,6 +13,14 @@
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Accueil</servlet-name>
     <servlet-class>fr.eni.encheres.servlets.Accueil</servlet-class>
   </servlet>
@@ -28,6 +36,14 @@
     <servlet-name>CreerProfil</servlet-name>
     <url-pattern>/creationProfil</url-pattern>
   </servlet-mapping>
+  <filter>
+    <filter-name>PrechargementFilter</filter-name>
+    <filter-class>fr.eni.encheres.filters.PrechargementFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PrechargementFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>testDao</servlet-name>
     <servlet-class>fr.eni.encheres.servlets.testDao</servlet-class>
@@ -44,12 +60,6 @@
     <servlet-name>CreerVente</servlet-name>
     <url-pattern>/utilisateur/editionEnchere</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>Deconnexion</servlet-name>
-    <servlet-class>fr.eni.encheres.servlets.Deconnexion</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Deconnexion</servlet-name>
-    <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
+  <servlet>
 </web-app>
