@@ -58,8 +58,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>CreerVente</servlet-name>
-    <url-pattern>/utilisateur/editionEnchere</url-pattern>
+    <url-pattern>/editionEnchere</url-pattern>
   </servlet-mapping>
-  </servlet-mapping>
-  <servlet>
 </web-app>
