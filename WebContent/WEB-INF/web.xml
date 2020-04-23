@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>ENI-Encheres</display-name>
+  <display-name>encheres</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>accueil.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Connexion</servlet-name>
@@ -25,7 +20,6 @@
     <servlet-name>Accueil</servlet-name>
     <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CreerProfil</servlet-name>
     <servlet-class>fr.eni.encheres.servlets.CreerProfil</servlet-class>
@@ -33,5 +27,29 @@
   <servlet-mapping>
     <servlet-name>CreerProfil</servlet-name>
     <url-pattern>/creationProfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>testDao</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.testDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>testDao</servlet-name>
+    <url-pattern>/testDao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CreerVente</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.CreerVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreerVente</servlet-name>
+    <url-pattern>/utilisateur/editionEnchere</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
 </web-app>

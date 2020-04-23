@@ -15,8 +15,9 @@
 		<div class="logo">
 			<p>ENI-Enchères</p>
 		</div>
+		
 		<div class="menu">
-			<p><a href="<c:url value=""/>">S'inscrire - se connecter</a></p>
+			<c:import url="/inc/menu.jsp" />
 		</div>
 		</div>
 		<div class="titre-page">

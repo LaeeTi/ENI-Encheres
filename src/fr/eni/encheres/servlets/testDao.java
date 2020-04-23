@@ -29,7 +29,7 @@ import fr.eni.encheres.dao.UtilisateurDao;
 /**
  * Servlet implementation class testDao
  */
-@WebServlet("/testDao")
+
 public class testDao extends HttpServlet {
 	
 	private UtilisateurDao          utilisateurDao;

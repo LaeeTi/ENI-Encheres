@@ -1,5 +1,6 @@
 package fr.eni.encheres.servlets;
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,13 +17,12 @@ import fr.eni.encheres.dao.DAOFactory;
 import fr.eni.encheres.dao.UtilisateurDao;
 import fr.eni.encheres.forms.CreationProfilForm;
 
-
 public class CreerProfil extends HttpServlet {
 	public static final String CONF_DAO_FACTORY = "daofactory";
     public static final String ATT_UTILISATEUR       = "utilisateur";
     public static final String ATT_FORM         = "form";
     public static final String SESSION_UTILISATEURS  = "utilisateurs";
-    public static final String VUE_SUCCES       = "/utilisateur/editionProfil.jsp";
+    public static final String VUE_SUCCES       = "/utilisateur/afficherProfil.jsp";
     public static final String VUE_FORM         = "/creationProfil.jsp";
 
     private UtilisateurDao          utilisateurDao;
