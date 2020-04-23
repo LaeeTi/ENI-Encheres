@@ -15,7 +15,7 @@ import fr.eni.encheres.dao.DAOFactory;
 import fr.eni.encheres.dao.CategorieDao;
 import fr.eni.encheres.beans.Categorie;
 
-public class CreerVente extends HttpServlet {
+public class CreerArticle extends HttpServlet {
 	public static final String CONF_DAO_FACTORY = "daofactory";
 
 	private CategorieDao 		categorieDao;

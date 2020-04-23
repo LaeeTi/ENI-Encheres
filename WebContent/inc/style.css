@@ -117,6 +117,9 @@ header {
 	box-shadow: 4px 4px 2px black;
 }
 
+.bloc-afficher-profil{
+	flex-direction: column;
+}
 
 
 /* ---------- page liste ventes ----------------- */

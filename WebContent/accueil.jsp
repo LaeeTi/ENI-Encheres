@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
 
@@ -15,7 +14,7 @@
 	<header>
 	<div class="top">
 		<div class="logo">
-			<p>ENI-Enchères</p>
+			<p>ENI-EnchÃ¨res</p>
 		</div>
 		<div class="menu">
 			<p>
@@ -23,33 +22,35 @@
 					<a href="<c:url value="/connexion"/>">S'inscrire - se connecter</a>
 				</c:if>
 				<c:if test="${ not empty utilisateurConnecte }">
-					<a href="<c:url value="/deconnexion"/>">Se déconnecter</a>
+					<a href="<c:url value="/afficherProfil?noUtilisateur=${ sessionScope.utilisateurConnecte.noUtilisateur }"/>">Mon profil</a>
+					<a href="<c:url value="/deconnexion"/>">Se dÃ©connecter</a>
 				</c:if>
 			</p>
 		</div>
 	</div>
 	<div class="titre-page">
 		<h1>
-			Liste des enchères (
+			Liste des enchÃ¨res (
 			<c:out value="${ sessionScope.utilisateurConnecte.pseudo }"></c:out>
 			)
 		</h1>
 	</div>
 	</header>
-	<%-- /rechercherEnchere correspond au nom définit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
+	<%-- /rechercherEnchere correspond au nom dÃ©finit en annotation sur la servlet (@WebServlet("/rechercherEnchere")) --%>
 
-	<form method="post" action="<c:url value="/accueil"></c:url>">
+	<form method="post" action="<c:url 
+	value="/accueil"></c:url>">
 		<div class="liste-ventes">
 			<div class="filtres">
 				<div class="titre">Filtres :</div>
 				<div class=search>
-					<img class=search-icon src="./inc/loupe.svg" alt="icône de loupe">
+					<img class=search-icon src="./inc/loupe.svg" alt="icÃ´ne de loupe">
 					<input type="search" id="recherche" name="recherche"
 						placeHolder="Le nom de l'article contient"
 						value="<c:out value="${recherche}"></c:out>" />
 				</div>
 				<div class="categorie">
-					<label for=categorie">Catégorie :</label> <select name="categorie"
+					<label for=categorie">CatÃ©gorie :</label> <select name="categorie"
 						id="categorie">
 						<option value="0">Toutes</option>
 						<c:forEach items="${ sessionScope.categories }" var="cat">
@@ -64,7 +65,7 @@
 
 					</select>
 				</div>
-				<%-- Condition pour garder les cases cochées précedement --%>
+				<%-- Condition pour garder les cases cochÃ©es prÃ©cedement --%>
 
 
 				<div class="radio-type"
@@ -76,17 +77,17 @@
 							type="checkbox" id="encheresOuvertes" name="encheresOuvertes"
 							class="input-achats"
 							<c:if test ="${ encheresOuvertes }">checked</c:if>> <label
-							class="input-achats" for="encheresOuvertes">enchères
+							class="input-achats" for="encheresOuvertes">enchÃ¨res
 								ouvertes</label></span> <span><input type="checkbox"
 							id="encheresEnCours" name="encheresEnCours" class="input-achats"
 							<c:if test ="${ encheresEnCours }">checked</c:if>> <label
-							class="input-achats" for="encheresEnCours">mes enchères
+							class="input-achats" for="encheresEnCours">mes enchÃ¨res
 								en cours</label></span> <span><input type="checkbox"
 							id="encheresRemportees" name="encheresRemportees"
 							class="input-achats"
 							<c:if test ="${ encheresRemportees }">checked</c:if>> <label
 							class="input-achats" for="encheresRemportees">mes
-								enchères remportées</label></span>
+								enchÃ¨res remportÃ©es</label></span>
 					</div>
 					<div class="checkboxes">
 						<span><input type="radio" id="ventes" name="type"
@@ -100,11 +101,11 @@
 							name="ventesNonDebutees" class="input-ventes"
 							<c:if test ="${ ventesNonDebutees }">checked</c:if>> <label
 							class="input-ventes" for="ventesNonDebutees">ventes non
-								debutées</label></span> <span><input type="checkbox"
+								debutÃ©es</label></span> <span><input type="checkbox"
 							id="ventesTerminees" name="ventesTerminees" class="input-ventes"
 							<c:if test ="${ ventesTerminees }">checked</c:if>> <label
 							class="input-ventes" for="ventesTerminees">ventes
-								terminées</label></span>
+								terminÃ©es</label></span>
 					</div>
 				</div>
 			</div>
@@ -128,7 +129,7 @@
 				</p>
 
 				<p>
-					Fin de l'enchère :
+					Fin de l'enchÃ¨re :
 					<joda:format value="${ article.value.dateFinEncheres}"
 						pattern="dd/MM/yyyy"></joda:format>
 				</p>

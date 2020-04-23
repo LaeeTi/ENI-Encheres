@@ -36,13 +36,37 @@
     <servlet-name>CreerProfil</servlet-name>
     <url-pattern>/creationProfil</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
+    <servlet-name>CreerArticle</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.CreerArticle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreerArticle</servlet-name>
+    <url-pattern>/creationArticle</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AfficherProfil</servlet-name>
     <servlet-class>fr.eni.encheres.servlets.AfficherProfil</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AfficherProfil</servlet-name>
     <url-pattern>/afficherProfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifierProfil</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.ModifierProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifierProfil</servlet-name>
+    <url-pattern>/editionProfil</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>SupprimerProfil</servlet-name>
+    <servlet-class>fr.eni.encheres.servlets.SupprimerProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SupprimerProfil</servlet-name>
+    <url-pattern>/supressionProfil</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>PrechargementFilter</filter-name>

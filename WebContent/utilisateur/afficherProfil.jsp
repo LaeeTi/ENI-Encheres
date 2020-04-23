@@ -16,19 +16,21 @@
 		</div></div>
 	</header>
 
-	<div id="bloc-afficher-profil">
-            <p>Pseudo : <c:out value="${ utilisateurAffiche.pseudo }"/></p>
-            <p>Nom : <c:out value="${ utilisateurAffiche.nom }"/></p>
-            <p>Prénom : <c:out value="${ utilisateurAffiche.prenom }"/></p>
-            <p>Email : <c:out value="${ utilisateurAffiche.email }"/></p>
-            <p>Téléphone : <c:out value="${ utilisateurAffiche.telephone }"/></p>
-            <p>Rue : <c:out value="${ utilisateurAffiche.rue }"/></p>
-            <p>Code postal : <c:out value="${ utilisateurAffiche.codePostal }"/></p>
-            <p>Ville : <c:out value="${ utilisateurAffiche.ville }"/></p>
+	<div class="bloc-afficher-profil">
+            <p>Pseudo : <c:out value="${ utilisateurAffiche.pseudo }"/></p><br>
+            <p>Nom : <c:out value="${ utilisateurAffiche.nom }"/></p><br>
+            <p>Prénom : <c:out value="${ utilisateurAffiche.prenom }"/></p><br>
+            <p>Email : <c:out value="${ utilisateurAffiche.email }"/></p><br>
+            <p>Téléphone : <c:out value="${ utilisateurAffiche.telephone }"/></p><br>
+            <p>Rue : <c:out value="${ utilisateurAffiche.rue }"/></p><br>
+            <p>Code postal : <c:out value="${ utilisateurAffiche.codePostal }"/></p><br>
+            <p>Ville : <c:out value="${ utilisateurAffiche.ville }"/></p><br>
     </div>
 	
-	Num utilisateur affiché<c:out value="${ utilisateurAffiche.noUtilisateur }"/>
-	Num utilisateur connecté<c:out value="${ utilisateurConnecte.noUtilisateur }"/>
-	
+		<c:if test="${ utilisateurAffiche.noUtilisateur == sessionScope.utilisateurConnecte.noUtilisateur }">
+			<div class="bloc-inscription">
+				<a href="./editionProfil"><input type="button" id="modifier" value="Modifier" /></a>
+			</div>
+		</c:if>	
 </body>
 </html>

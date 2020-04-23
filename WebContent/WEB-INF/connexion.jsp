@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +12,7 @@
 	<header>
 		<div class="top">
 		<div class="logo">
-			<p>ENI-Enchères</p>
+			<p>ENI-EnchÃ¨res</p>
 		</div></div>
 	</header>
 	
@@ -38,7 +37,7 @@
 			<div class="bloc-droit">   
  			 	<span><input type="checkbox" id="enregistrement_profil" name="enregistrement_profil">
  			 	<label for="horns">Se souvenir de moi</label></span>
- 			 	<span><a href="/connexion">Mot de passe oubliïé</a> </span>
+ 			 	<span><a href="/connexion">Mot de passe oubliÃ©</a> </span>
 			</div>
 		</div>	
 	</form>
@@ -51,7 +50,7 @@
 			<% } %>
 		</div>	
 		<div class="bloc-inscription">
-		<a href="/creationProfil"><input type="button" id="inscription" value="Créer un compte" /></a>
+		<a href="<%=request.getContextPath()%>/creationProfil"><input type="button" id="inscription" value="CrÃ©er un compte" /></a>
 		</div>
 	</div>		
 </body>
