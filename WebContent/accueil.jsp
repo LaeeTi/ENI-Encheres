@@ -19,8 +19,12 @@
 		</div>
 		<div class="menu">
 			<p>
-			<c:if test ="${ empty utilisateurConnecte }"><a href="<c:url value="/connexion"/>">S'inscrire - se connecter</a></c:if>
-			<c:if test ="${ not empty utilisateurConnecte }"><a href="<c:url value="/deconnexion"/>">Se déconnecter</a></c:if>
+				<c:if test="${ empty utilisateurConnecte }">
+					<a href="<c:url value="/connexion"/>">S'inscrire - se connecter</a>
+				</c:if>
+				<c:if test="${ not empty utilisateurConnecte }">
+					<a href="<c:url value="/deconnexion"/>">Se déconnecter</a>
+				</c:if>
 			</p>
 		</div>
 	</div>
@@ -61,9 +65,10 @@
 					</select>
 				</div>
 				<%-- Condition pour garder les cases cochées précedement --%>
-				
-				
-				<div class="radio-type" <c:if test ="${ empty utilisateurConnecte }">style="display:none"</c:if> >
+
+
+				<div class="radio-type"
+					<c:if test ="${ empty utilisateurConnecte }">style="display:none"</c:if>>
 					<div class="checkboxes">
 						<span><input type="radio" id="achats" name="type"
 							value="achats" <c:if test ="${ type == 'achats' }">checked</c:if> />
@@ -128,27 +133,32 @@
 						pattern="dd/MM/yyyy"></joda:format>
 				</p>
 				<p>
-					Vendeur :
-					<c:out value="${ article.value.vendeur.pseudo }"></c:out>
+				<c:if test="${ empty utilisateurConnecte }">
+					Vendeur : <c:out value="${ article.value.vendeur.pseudo }"></c:out>
+				</c:if>
+				<c:if test="${ not empty utilisateurConnecte }">
+					Vendeur : <a href="<c:url value="/utilisateur/afficherProfil.jsp?noUtilisateur=${ article.value.vendeur.noUtilisateur }"/>"><c:out
+							value="${ article.value.vendeur.pseudo }"></c:out></a>
+				</c:if>	
 				</p>
 			</div>
 		</c:forEach>
 	</div>
-	
-	
+
 	<script src="<c:url value="/inc/jquery.js"></c:url>"></script>
 
 	<%-- Petite fonction jQuery permettant d'inactiver les checkboxes du bouton radio non choisi. --%>
 	<script>
 		var valRadio;
-		jQuery(document).ready(function() {		
+		jQuery(document).ready(function() {
 			valRadio = jQuery('input[name=type]:checked').val();
 			test(valRadio);
 			jQuery('input[name=type]:radio').click(function() {
 				valRadio = jQuery(this).val()
-				test(valRadio)});
-		});	
-		function test (valRadio) {
+				test(valRadio)
+			});
+		});
+		function test(valRadio) {
 			$("input.input-achats, input.input-ventes").prop("disabled", true);
 			$("input.input-" + valRadio).prop("disabled", false);
 			console.log(valRadio);

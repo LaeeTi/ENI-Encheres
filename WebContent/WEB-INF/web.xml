@@ -36,6 +36,7 @@
     <servlet-name>CreerProfil</servlet-name>
     <url-pattern>/creationProfil</url-pattern>
   </servlet-mapping>
+ 
   <filter>
     <filter-name>PrechargementFilter</filter-name>
     <filter-class>fr.eni.encheres.filters.PrechargementFilter</filter-class>
@@ -44,20 +45,4 @@
     <filter-name>PrechargementFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
-    <servlet-name>testDao</servlet-name>
-    <servlet-class>fr.eni.encheres.servlets.testDao</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>testDao</servlet-name>
-    <url-pattern>/testDao</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>CreerVente</servlet-name>
-    <servlet-class>fr.eni.encheres.servlets.CreerVente</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreerVente</servlet-name>
-    <url-pattern>/editionEnchere</url-pattern>
-  </servlet-mapping>
 </web-app>
