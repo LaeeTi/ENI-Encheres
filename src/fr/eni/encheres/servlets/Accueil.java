@@ -9,39 +9,37 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.joda.time.DateTime;
+
 
 import fr.eni.encheres.beans.ArticleVendu;
 import fr.eni.encheres.beans.Categorie;
 import fr.eni.encheres.beans.Enchere;
 import fr.eni.encheres.beans.Utilisateur;
-import fr.eni.encheres.dao.ArticleVenduDao;
-import fr.eni.encheres.dao.CategorieDao;
 import fr.eni.encheres.dao.DAOFactory;
 import fr.eni.encheres.dao.EnchereDao;
 
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DAOFactory daoFactory;
-	private CategorieDao categorieDao;
-	private ArticleVenduDao articleDao;
+
 	private EnchereDao enchereDao;
-	private Map<Long, ArticleVendu> articles = new HashMap<Long, ArticleVendu>();
-	private List<Categorie> categories;
+	private Map<Long, ArticleVendu> articles ;
+	private Map<Long, Categorie> categories;
 	private List<Enchere> encheres;
 	private Utilisateur utilisateurConnecte;
 
-	// Methode initié au lancement de l'application
+
+
 	public void init() throws ServletException {
 		// Initiation de la DAOFactory
 		this.daoFactory = DAOFactory.getInstance();
 		// Creation des objetsDao pour accéder au methode lister()
-		this.categorieDao = daoFactory.getCategorieDao();
-		this.articleDao = daoFactory.getArticleVenduDao();
+
 		this.enchereDao = daoFactory.getEnchereDao();
-		
-		System.out.println("TEST init");
+
 
 	}
 
@@ -60,16 +58,24 @@ public class Accueil extends HttpServlet {
 	protected void rechercherArticleVendus(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Récupération des listes d'article, d'enchères et de catégories
-		for (ArticleVendu a : articleDao.lister()) {
-			this.articles.put(a.getNoArticle(), a);
+		//for (ArticleVendu a : articleDao.lister()) {
+		//	this.articles.put(a.getNoArticle(), a);
+		//}
+		/*Recupération de la session */
+		HttpSession session = request.getSession();
+		/* Récupération de la map des articles dans la session */
+        this.articles = (HashMap<Long, ArticleVendu>) session.getAttribute( "articles" );
+        this.categories = (HashMap<Long, Categorie>) session.getAttribute( "categories" );
+        System.out.println("map dans servlet" + articles);
+        /* Si aucune map n'existe, alors initialisation d'une nouvelle map */
+        if ( articles == null ) {
+            this.articles = new HashMap<Long, ArticleVendu>();
+        }
+		if (categories == null) {
+			this.categories = new HashMap<Long, Categorie>();
 		}
-		this.categories = categorieDao.lister();
+    
 		this.encheres = enchereDao.lister();
-
-		// Passage de la liste de catégorie en Attribute pour pouvoir la
-		// récupérer dans la JSP
-
-		request.setAttribute("categories", categories);
 
 		// On récupère l'utilisateur stocké en session
 		this.utilisateurConnecte = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
@@ -85,7 +91,7 @@ public class Accueil extends HttpServlet {
 		}
 
 		// Affichage de la page d'accueil
-		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
 	}
 
 	protected void afficherListeNonConnecte(HttpServletRequest request, HttpServletResponse response)
@@ -99,7 +105,7 @@ public class Accueil extends HttpServlet {
 		String categorie = request.getParameter("categorie");
 
 		// Par défaut, on afficher la liste des articles en cours parmis tous les articles
-		articlesAffiches = rechercherParEtatAchat(true, false, false, this.articles);
+		articlesAffiches = rechercherParEtatAchat(true, false, false, articles);
 		// Puis on filtre par catégorie
 		articlesAffiches = rechercherParCategorie(categorie, articlesAffiches);
 		// Puis on filtre par mot recherché
@@ -110,7 +116,7 @@ public class Accueil extends HttpServlet {
 		// réafficher au rechergement de la page
 		request.setAttribute("recherche", recherche);
 		request.setAttribute("categorie", categorie);
-		// on envoi la liste des articles à afficher
+		// on envoi la liste des articles à afficher à la session
 		request.setAttribute("articlesAffiches", articlesAffiches);
 	}
 
@@ -130,14 +136,12 @@ public class Accueil extends HttpServlet {
 		boolean encheresEnCours = request.getParameter("encheresEnCours") != null;
 		boolean encheresRemportees = request.getParameter("encheresRemportees") != null;
 
-		System.out.println(type);
+
 		//Si c'est le premier affichage de la page, on met coche par défaut
 		if (type == null || type.length() == 0){
 			type = "achats";
 			encheresOuvertes = true;
-		}
-		System.out.println(type);
-		
+		}	
 		
 		
 		// on filtre en fonction du bouton radio, on filtre par les checkboxes
@@ -165,7 +169,8 @@ public class Accueil extends HttpServlet {
 		request.setAttribute("encheresOuvertes", encheresOuvertes);
 		request.setAttribute("encheresEnCours", encheresEnCours);
 		request.setAttribute("encheresRemportees", encheresRemportees);
-		// on envoi la liste des articles à afficher
+		
+		// on envoi la liste des articles à afficher à la session
 		request.setAttribute("articlesAffiches", articlesAffiches);
 	}
 

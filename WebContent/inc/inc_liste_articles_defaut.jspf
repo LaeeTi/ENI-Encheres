@@ -1,0 +1,28 @@
+<div class="liste_enchere">
+	
+		<c:forEach items="${ sessionScope.articles }" var="article">
+			<c:if test="${ article.value.etatVente == 'EC' }">
+			<div class="enchere-miniature">
+
+				<p>
+					<a href="<c:url value="/vente.jsp"/>"> <c:out value="${ article.value.nomArticle }"></c:out></a>
+				</p>
+				<p>
+					Prix :
+					<c:out value="${ article.value.miseAPrix }"></c:out>
+					points
+				</p>
+
+				<p>
+					Fin de l'enchère :
+					<joda:format value="${ article.value.dateFinEncheres}"
+						pattern="dd/MM/yyyy"></joda:format>
+				</p>
+				<p>
+					Vendeur :
+					<c:out value="${ article.value.vendeur.pseudo }"></c:out>
+				</p>
+			</div>
+			</c:if>
+		</c:forEach>
+</div>

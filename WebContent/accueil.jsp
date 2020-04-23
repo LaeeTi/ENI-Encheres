@@ -48,13 +48,13 @@
 					<label for=categorie">Catégorie :</label> <select name="categorie"
 						id="categorie">
 						<option value="0">Toutes</option>
-						<c:forEach items="${ categories }" var="cat">
+						<c:forEach items="${ sessionScope.categories }" var="cat">
 							<%-- Condition pour garder la selection precedente --%>
 							<c:set var="isSelected" scope="page" value="" />
-							<c:if test="${ categorie == cat.noCategorie }">
+							<c:if test="${ categorie == cat.value.noCategorie }">
 								<c:set var="isSelected" value="selected" />
 							</c:if>
-							<option value="${ cat.noCategorie }" ${ isSelected }>${cat.libelle }
+							<option value="${ cat.value.noCategorie }" ${ isSelected }>${cat.value.libelle }
 							</option>
 						</c:forEach>
 
@@ -133,8 +133,9 @@
 				</p>
 			</div>
 		</c:forEach>
-
 	</div>
+	
+	
 	<script src="<c:url value="/inc/jquery.js"></c:url>"></script>
 
 	<%-- Petite fonction jQuery permettant d'inactiver les checkboxes du bouton radio non choisi. --%>
